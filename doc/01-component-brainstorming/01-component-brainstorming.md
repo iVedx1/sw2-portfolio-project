@@ -1,12 +1,10 @@
 # Portfolio Part 1: Component Brainstorming
 
-- **Name**: <!-- TODO: fill with first and last name (e.g., Brutus Buckeye) then delete this comment -->
-- **Dot Number**: <!-- TODO: fill with OSU dot number (e.g., buckeye.17) then delete this comment -->
-- **Due Date**: <!-- TODO: fill with due date and time (e.g., 10/17 @ 3:10 PM EST) then delete this comment -->
+- **Vedant Rakhonde**
+- **rakhonde.1**
+- **2/6/2026 @ 12:40PM EST**
 
 ## Assignment Overview
-
-<!-- TODO: read the assignment overview then delete this comment -->
 
 The overall goal of the portfolio project is to have you design and implement
 your own OSU component. There are no limits to what you choose to design and
@@ -29,8 +27,6 @@ implement.
 
 ## Assignment Checklist
 
-<!-- TODO: browse the checklist then delete this comment -->
-
 To be sure you have completed everything on this assignment, we have littered
 this document with TODO comments. You can browse all of them in VSCode by
 opening the TODOs window from the sidebar. The icon looks like a tree and will
@@ -52,8 +48,6 @@ to the tree diagram (you may remove this one as well):
 
 ## Assignment Learning Objectives
 
-<!-- TODO: read the assignment learning objectives then delete this comment -->
-
 Without learning objectives, there really is no clear reason why a particular
 assessment or activity exists. Therefore, to be completely transparent, here is
 what we're hoping you will learn through this particular aspect of the portfolio
@@ -66,8 +60,6 @@ project. Specifically, students should be able to:
    discipline
 
 ## Assignment Rubric: 10 Points
-
-<!-- TODO: read the assignment rubric then delete this comment -->
 
 Again, to be completely transparent, most of the portfolio project, except the
 final submission, is designed as a formative assessment. Formative assessments
@@ -106,23 +98,17 @@ Below is further rationale/explanation for the rubric items above:
 > brainstorming. Plus it helps us get to know you better! Feel free to share
 > images in this section.
 
-<!-- TODO: briefly talk about your interests then delete this comment.
-Also, protip: you can preview what your response looks like by hitting
-the magnifying glass icon in the upper-right corner or pressing CTRL+K and
-then V. This kind of button combination is called a chord, for whatever
-reason -->
+I'm really interested in working at the intersection of healthcare and computation
+I've done work at the intersection of ML/AI and healthcare already and hope to
+continue to do so as I work towards medical school and eventually an M.D.!
 
 ## Assignment
-
-<!-- TODO: read the assignment section then delete this comment -->
 
 As previously stated, you are tasked with brainstorming 3 possible components.
 To aid you in this process, we have provided [some example components][example-components]
 that may help you in your brainstorming. All of these components were made at
 some point by one of your peers, so you should feel confident that you can
 accomplish any of them.
-
-<!-- TODO: browse the list of possible projects then delete this comment -->
 
 There is no requirement that you use any of the components listed above.
 If you want to model something else, go for it! Very common early object
@@ -142,8 +128,6 @@ list-like components that have different ways of manipulating the data. Think
 about different ways you might allow a client to manipulate your component.
 
 ### Example Component
-
-<!-- TODO: review this example component then delete this comment -->
 
 To help you brainstorm a few components, we've provided an example below of a
 component you already know well: NaturalNumber. We highly recommend that you
@@ -211,68 +195,84 @@ will likely refine your design to make your implementation easier to use.
 
 > Please use this section to share your designs.
 
-- Component Design #1: <!-- TODO: give component a name then delete this comment -->
+- Component Design #1: BitMap
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - An 8-bit color bitmap image represented as a `Sequence\<Sequence\<int\>\>`
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - `int drawPixel(int x, int y, int color)` sets the color of the pixel at (x, y) indexed L->R T->B to the color represented by the int, the integers will be 0-255 (8 bit) colors. It also returns the previous color of that pixel.
+    - `int getColor(int x, int y)` returns the color as an int 0-255 of the pixel at (x, y)
+    - `setSize(int x, int y)` clears out the bitmap "canvas" and resizes it to be x by y pixels.
+    - `void clear()` clears a bitmap image to default colors
+    - `int height()` returns the height (y) of the bitmap
+    - `int width()` returns the width (x) of bitmap
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - `void drawColumn(int x, int color)` draws the entire column of pixels at x as color
+    - `void drawRow(int y, int color)` draws the entire row of pixels at y as color
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, pixels and rows/columns should be changeable, along with the canvas size
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, it relies on Sequence and java's inbuilt int
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - I'd need to define which 256 colors are assigned to each number 0-255
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, for example `drawRow(int x, int color)` would work by iterating y over the xth nested Sequence in rep and use `drawPixel(x, y, color)` to set the colors until the end of the row is reached.
 
-- Component Design #2: <!-- TODO: give component a name then delete this comment -->
+- Component Design #2: Color
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - A 256-color representable color type that also supports 16 brightnesses per color
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - `int getBaseColor()` returns the base color int 0-255 of `this`
+    - `int getBrightness()` returns the brightness value 0-15 of `this`
+    - `void setColor(int n)` sets our base color to n, n must be 0-255
+    - `void setBrightness(int n)` sets our brightness to n, n must be 0-15
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - `brighten()` increases the brightness of this by 1
+    - `darken()` decreases the brightness of this by 1
+    - `set(int c, int b)` sets both the base color and brightness with one function call, c and b must be 0-255 and 0-15 respectively
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, we want to be able to change the base color and the brightness
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - No, we're only using ints for holding our representation that can just live in the object
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - We may have to manually enumerate the base colors if there isn't a way to nicely procedurally generate them
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, I can implement the secondary methods. brighten() and darken() just increment/decrement the brightness value, while set(int c, int b) is just implemented by running setColor(c); and setBrightness(b); as a macro.
 
-- Component Design #3: <!-- TODO: give component a name then delete this comment -->
+- Component Design #3: Wave
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - A pure sinusoid wave represented as a Map.Pair<Integer, Integer>. the two integers are the frequency and amplitude of the wave
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - `setFrequency(int f)` sets the frequency to f
+    - `setAmplitude(int a)` sets the amplitude to a
+    - `clear` clears out both the frequency and amplitude to zero
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - `louden()` increments this.amplitude
+    - `quiet()` decrements this.amplitude
+    - `pitchUp` increments this.frequency
+    - `pitchDown` decrements this.frequency
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, we want to be able to manipulate the wave
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - No, we only use two ints
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - No, we only are storing two values
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, all of the secondary methods either increment or decrement frequency or amplitude. For example this.louden() just runs amplitude++;
 
 ## Post-Assignment
 
@@ -280,8 +280,6 @@ The following sections detail everything that you should do once you've
 completed the assignment.
 
 ### Changelog
-
-<!-- TODO: create CHANGELOG then delete this comment -->
 
 At the end of every assignment, you should update the
 [CHANGELOG.md](../../CHANGELOG.md) file found in the root of the project folder.
@@ -320,8 +318,6 @@ of development.
 
 ### Submission
 
-<!-- TODO: read the submission instructions then delete this comment -->
-
 If you have completed the assignment using this template, we recommend that
 you convert it to a PDF before submission. If you're not sure how, check out
 this [Markdown to PDF guide][markdown-to-pdf-guide]. However, PDFs should be
@@ -330,11 +326,9 @@ all your work is there before submitting. For future assignments, you will
 just be submitting a link to a pull request. This will be the only time
 you have to submit any PDFs.
 
-<!-- TODO: upload a PDF of this document and the CHANGELOG to Carmen then delete this comment -->
-
 ### Peer Review
 
-<!-- TODO: review the peer review guidelines then delete this comment -->
+
 
 Following the completion of this assignment, you will be assigned three
 students' component brainstorming assignments for review. Your job during the
@@ -361,7 +355,7 @@ If you'd like to give feedback for this assignment (or any assignment, really),
 make use of [this survey][survey]. Your feedback helps make assignments
 better for future students.
 
-<!-- TODO: follow the link to share your feedback then delete this comment -->
+
 
 [example-components]: https://therenegadecoder.com/code/the-never-ending-list-of-small-programming-project-ideas/
 [markdown-to-pdf-guide]: https://therenegadecoder.com/blog/how-to-convert-markdown-to-a-pdf-3-quick-solutions/
