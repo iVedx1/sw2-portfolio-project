@@ -6,6 +6,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Calendar Versioning](https://calver.org/) of
 the following form: YYYY.0M.0D.
 
+## 2026.2.25
+
+### Added
+
+- Created a new branch named "proof-of-concept"
+- Created an initial proof-of-concept of the BitMapImage class on the new git branch
+
+### Updated
+- My specification no longer allows for the image to be resized
+
+## 2026.2.5
+
+### Added
+
+- Designed a Bitmap component
+- Designed a Color component
+- Designed a Wave component
+
 ## [Unreleased]
 
 - Disabled an aspect of the coderunner extension
