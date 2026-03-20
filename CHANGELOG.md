@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Calendar Versioning](https://calver.org/) of
 the following form: YYYY.0M.0D.
 
+## 2026.3.9
+
+### Added
+
+- Created new branch "interfaces"
+- Created BitMapImageKernel and BitMapImage interfaces
+
+### Updated
+BitMapImage to be named BitMapImage1 and implemented setSize(), allowing the canvas to be resized
+
 ## 2026.2.25
 
 ### Added
