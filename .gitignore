@@ -1,5 +1,8 @@
 ### STANDARD JAVA FILES ###
 
+# VSCode settings
+.vscode/
+
 # Compiled class file
 *.class
 

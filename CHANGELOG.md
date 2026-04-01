@@ -6,6 +6,48 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Calendar Versioning](https://calver.org/) of
 the following form: YYYY.0M.0D.
 
+## 2026.04.01
+
+### Added
+
+- Created BitMapImageSecondary abstract class implementing all secondary methods
+- Implemented secondary methods: clearCanvas(), setRow(), setColumn(), setSize()
+- Implemented Object methods: toString() and equals()
+- All secondary methods use only kernel methods (setPixel, getPixel, getWidth, getHeight)
+
+### Updated
+
+- Moved setRow() and setColumn() implementations from BitMapImage1 to BitMapImageSecondary
+- Secondary methods now follow OSU doctrine with design-by-contract precondition checks
+
+## 2026.3.9
+
+### Added
+
+- Created new branch "interfaces"
+- Created BitMapImageKernel and BitMapImage interfaces
+
+### Updated
+BitMapImage to be named BitMapImage1 and implemented setSize(), allowing the canvas to be resized
+
+## 2026.2.25
+
+### Added
+
+- Created a new branch named "proof-of-concept"
+- Created an initial proof-of-concept of the BitMapImage class on the new git branch
+
+### Updated
+- My specification no longer allows for the image to be resized
+
+## 2026.2.5
+
+### Added
+
+- Designed a Bitmap component
+- Designed a Color component
+- Designed a Wave component
+
 ## [Unreleased]
 
 - Disabled an aspect of the coderunner extension
