@@ -6,6 +6,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Calendar Versioning](https://calver.org/) of
 the following form: YYYY.0M.0D.
 
+## 2026.04.01
+
+### Added
+
+- Created BitMapImageSecondary abstract class implementing all secondary methods
+- Implemented secondary methods: clearCanvas(), setRow(), setColumn(), setSize()
+- Implemented Object methods: toString() and equals()
+- All secondary methods use only kernel methods (setPixel, getPixel, getWidth, getHeight)
+
+### Updated
+
+- Moved setRow() and setColumn() implementations from BitMapImage1 to BitMapImageSecondary
+- Secondary methods now follow OSU doctrine with design-by-contract precondition checks
+
 ## 2026.3.9
 
 ### Added

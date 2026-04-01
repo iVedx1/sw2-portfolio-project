@@ -99,45 +99,6 @@ class BitMapImage1 {
     }
 
     /**
-     * Sets the entire row y to the specified colors. The colors array should
-     * have a length equal to the width of the bitmap, and each color should be
-     * an integer in the range 0-255.
-     *
-     * @param y
-     *            the y-coordinate of the row to set
-     * @param colors
-     *            the array of colors to set the row to (length must match
-     *            bitmap width)
-     */
-    public void setRow(int y, int[] colors) {
-        assert colors.length == this
-                .getWidth() : "Colors array length must match bitmap width";
-        // wow I wrote an assertion!
-        for (int x = 0; x < colors.length; x++) {
-            this.grid[y][x].setFromInt(colors[x]);
-        }
-    }
-
-    /**
-     * Sets the entire column x to the specified colors. The colors array should
-     * have a length equal to the height of the bitmap, and each color should be
-     * an integer in the range 0-255.
-     *
-     * @param x
-     *            the x-coordinate of the column to set
-     * @param colors
-     *            the array of colors to set the column to (length must match
-     *            bitmap height)
-     */
-    public void setColumn(int x, int[] colors) {
-        assert colors.length == this
-                .getHeight() : "Colors array length must match bitmap height";
-        for (int y = 0; y < colors.length; y++) {
-            this.grid[y][x].setFromInt(colors[y]);
-        }
-    }
-
-    /**
      * Sets the size of the bitmap to the specified width and height. All pixels
      * are initialized to black (0).
      *
