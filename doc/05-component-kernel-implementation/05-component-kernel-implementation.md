@@ -1,8 +1,8 @@
 # Portfolio Part 5: Kernel Implementation
 
-- **Name**: <!-- TODO: fill with first and last name (e.g., Brutus Buckeye) and delete this comment -->
-- **Dot Number**: <!-- TODO: fill with OSU dot number (e.g., buckeye.17) and delete this comment -->
-- **Due Date**: <!-- TODO: fill out with due date and time (e.g., 10/17 @ 3:10 PM EST) and delete this comment -->
+- **Name**: Vedant Rakhonde
+- **Dot Number**: rakhonde.1
+- **Due Date**: 4/14/2026
 
 ## Assignment Overview
 
@@ -109,18 +109,16 @@ Below is further rationale/explanation for the rubric items above:
 
 ## Pre-Assignment Tasks
 
-> While you're nearing the end of a complete component implementation, there are
-> still a few challenging questions to answer. The one we will be focusing on
-> right now is the choice of representation. In other words, how do you plan
-> to model your component using other data structures? For the first time this
-> semester, you will be selecting your own representation, and you will be
-> defining your own convention and correspondence for this representation.
-> Rather than jumping into the code, take a moment to actually select that
-> representation now and justify it. Feel free to also use this space to
-> discuss how that representation will be restricted (i.e., by convention)
-> and interpreted (i.e., by correspondence).
-
-<!-- TODO: select a representation and explain why -->
+The BitMapImage component is represented as a two-dimensional array of
+`NaturalNumber` objects. This representation matches the pixel-grid model
+directly: each entry stores one grayscale value, so the kernel methods can read
+and update pixels without extra translation. The width and height are stored as
+separate fields so the component can report dimensions efficiently and enforce
+coordinate bounds consistently. By convention, `grid[y][x]` is the pixel at
+column `x` and row `y`, and every stored value is a color in the standard
+8-bit grayscale range. The correspondence is that the array dimensions match
+the bitmap dimensions, and the stored `NaturalNumber` value at each location is
+the visible color of that pixel.
 
 > To start making your kernel implementation, make a branch off of main in your
 > new repo called something like `kernel-implementation`. There are many ways to

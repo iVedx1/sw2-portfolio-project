@@ -14,7 +14,6 @@ public abstract class BitMapImageSecondary implements BitMapImage {
      */
     @Override
     public void clearCanvas() {
-        // Loop through all pixels and set each to black (0)
         for (int y = 0; y < this.getHeight(); y++) {
             for (int x = 0; x < this.getWidth(); x++) {
                 this.setPixel(x, y, 0);
@@ -28,16 +27,16 @@ public abstract class BitMapImageSecondary implements BitMapImage {
      * @param y
      *            the y-coordinate of the row to set
      * @param colors
-     *            the colors to set the pixels in row y to (0-255)
+     *            the colors to set the pixels in row y
      * @ensures for all x=0...width-1, the pixel at (x, y) is set to colors[x]
      */
     @Override
     public void setRow(int y, int[] colors) {
-        // Precondition: colors array must match bitmap width
-        assert colors.length == this
-                .getWidth() : "Colors array length must match bitmap width";
+        assert colors != null : "Violation of: colors is not null";
+        assert 0 <= y && y < this.getHeight() : "Violation of: y is in range";
+        final boolean correctLength = colors.length == this.getWidth();
+        assert correctLength : "Violation of: colors.length equals width";
 
-        // Set each pixel in row y to the corresponding color
         for (int x = 0; x < colors.length; x++) {
             this.setPixel(x, y, colors[x]);
         }
@@ -49,16 +48,16 @@ public abstract class BitMapImageSecondary implements BitMapImage {
      * @param x
      *            the x-coordinate of the column to set
      * @param colors
-     *            the colors to set the pixels in column x to (0-255)
+     *            the colors to set the pixels in column x
      * @ensures for all y=0...height-1, the pixel at (x, y) is set to colors[y]
      */
     @Override
     public void setColumn(int x, int[] colors) {
-        // Precondition: colors array must match bitmap height
-        assert colors.length == this
-                .getHeight() : "Colors array length must match bitmap height";
+        assert colors != null : "Violation of: colors is not null";
+        assert 0 <= x && x < this.getWidth() : "Violation of: x is in range";
+        final boolean correctLength = colors.length == this.getHeight();
+        assert correctLength : "Violation of: colors.length equals height";
 
-        // Set each pixel in column x to the corresponding color
         for (int y = 0; y < colors.length; y++) {
             this.setPixel(x, y, colors[y]);
         }
@@ -77,10 +76,10 @@ public abstract class BitMapImageSecondary implements BitMapImage {
      */
     @Override
     public void setSize(int width, int height) {
-        // Clear the current bitmap and reinitialize with new dimensions
-        this.clear();
-        // After clear(), the implementation will need to handle resizing
-        // The kernel implementation will manage the actual resizing
+        assert width >= 0 : "Violation of: width is nonnegative";
+        assert height >= 0 : "Violation of: height is nonnegative";
+
+        this.transferFrom(new BitMapImage1(width, height));
     }
 
     /**
@@ -98,7 +97,6 @@ public abstract class BitMapImageSecondary implements BitMapImage {
         sb.append(this.getHeight());
         sb.append("\n");
 
-        // Build a string representation of the pixel grid
         for (int y = 0; y < this.getHeight(); y++) {
             for (int x = 0; x < this.getWidth(); x++) {
                 int pixel = this.getPixel(x, y);
@@ -126,13 +124,11 @@ public abstract class BitMapImageSecondary implements BitMapImage {
 
         BitMapImage other = (BitMapImage) obj;
 
-        // Check if dimensions match
         if (this.getWidth() != other.getWidth()
                 || this.getHeight() != other.getHeight()) {
             return false;
         }
 
-        // Check if all pixels match
         for (int y = 0; y < this.getHeight(); y++) {
             for (int x = 0; x < this.getWidth(); x++) {
                 if (this.getPixel(x, y) != other.getPixel(x, y)) {
@@ -145,24 +141,21 @@ public abstract class BitMapImageSecondary implements BitMapImage {
     }
 
     /**
-     * Returns the hash code for this bitmap.
+     * Returns a hash code for this bitmap.
      *
-     * @return the hash code computed from width, height, and all pixel values
+     * @return a hash code for this bitmap
      */
     @Override
     public int hashCode() {
-        final int PRIME = 31; // A prime number for hash code calculation (31 seems to be industry standard)
-        int result = Integer.hashCode(this.getWidth());
-        result = PRIME * result + Integer.hashCode(this.getHeight());
-
-        // Incorporate all pixel values into the hash code
+        int hash = 1;
+        hash = hash * this.getWidth();
+        hash = hash * this.getHeight();
         for (int y = 0; y < this.getHeight(); y++) {
             for (int x = 0; x < this.getWidth(); x++) {
-                result = PRIME * result + Integer.hashCode(this.getPixel(x, y));
+                hash = hash * this.getPixel(x, y);
             }
         }
-
-        return result;
+        return hash;
     }
 
 }

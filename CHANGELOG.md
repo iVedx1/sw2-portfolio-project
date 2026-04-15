@@ -6,6 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Calendar Versioning](https://calver.org/) of
 the following form: YYYY.0M.0D.
 
+## 2026.04.14
+
+### Added
+
+- Started the BitMapImage kernel implementation in `BitMapImage1`
+- Added the representation convention and correspondence for the bitmap grid
+
+### Updated
+
+- Reworked `BitMapImageSecondary` so `setSize()` rebuilds the bitmap state
+- Tightened kernel precondition checks for pixel, row, and column operations
+- Updated `BitMapImage1` to implement the `Standard` operations for the component
+
 ## 2026.04.01
 
 ### Added
